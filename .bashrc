@@ -1,5 +1,5 @@
 #Files and Folders
-alias ll='ls -la'
+alias ll='ls -la --color=auto'
 
 #Python
 alias ve='python3 -m venv ./venv'
