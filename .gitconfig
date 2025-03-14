@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = master
+[user]
+	email = sven.baulesch@pt.lu
+	name = Sven Baulesch
+[core]
+	editor = code --wait
