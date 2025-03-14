@@ -3,8 +3,8 @@
 ### Setup new machine
 
 ```
-wget -O /tmp/setup.sh https://raw.githubusercontent.com/abraxoxs/dotfiles/master/config_my_server.sh
-bash /tmp/setup.sh
+wget -O /tmp/setup.sh https://raw.githubusercontent.com/abraxoxs/dotfiles/master/setup_dotfiles.sh
+bash /tmp/setup_dotfiles.sh
 ```
 
 ### Single Files
