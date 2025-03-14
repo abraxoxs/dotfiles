@@ -4,7 +4,7 @@
 
 ```
 wget -L https://github.com/abraxoxs/dotfiles/blob/master/config_my_server.sh
-bash config_my_server.sh.sh
+bash config_my_server.sh
 ```
 
 ### Single Files
