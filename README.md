@@ -3,7 +3,7 @@
 ### Setup new machine
 
 ```
-wget -O /tmp/setup.sh https://raw.githubusercontent.com/abraxoxs/dotfiles/master/setup_dotfiles.sh
+wget -O /tmp/setup_dotfiles.sh https://raw.githubusercontent.com/abraxoxs/dotfiles/master/setup_dotfiles.sh
 bash /tmp/setup_dotfiles.sh
 ```
 
