@@ -15,7 +15,8 @@ else
 fi
 
 # List of files to symlink or copy
-DOTFILES=(".gitconfig" ".bashrc" ".vimrc")
+#DOTFILES=(".gitconfig" ".bashrc" ".vimrc")
+DOTFILES=(".gitconfig")
 
 # Loop over each file and replace it
 for FILE in "${DOTFILES[@]}"; do
