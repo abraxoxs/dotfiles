@@ -39,7 +39,7 @@ else
 fi
 
 # List of files to symlink or copy
-DOTFILES=(".gitconfig" ".bashrc" ".vimrc")
+DOTFILES=(".gitconfig" ".bashrc" ".vimrc" ".zshrc")
 
 # Loop over each file and replace it
 for FILE in "${DOTFILES[@]}"; do
@@ -61,4 +61,19 @@ if [ -f "$HOME/.bashrc" ]; then
     source "$HOME/.bashrc"
 fi
 
-echo_success "Dotfiles setup complete!"
+# Step to install Zsh
+echo_step "Installing Zsh..."
+sudo apt update
+sudo apt install -y zsh
+
+# Make Zsh the default shell
+echo_step "Setting Zsh as the default shell..."
+chsh -s $(which zsh)
+
+# Install Oh My Zsh
+echo_step "Installing Oh My Zsh..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+
+# Final message
+echo_success "Dotfiles setup complete! Zsh is now the default shell with Oh My Zsh installed."
