@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Color codes for echoing with colors
 RED='\033[0;31m'
@@ -27,6 +28,33 @@ echo_warning() {
 echo_error() {
     echo -e "${RED}$1${NC}"
 }
+
+echo "🔄 Updating system..."
+sudo apt update && sudo apt upgrade -y
+
+echo "🐳 Installing Docker..."
+curl -fsSL https://get.docker.com | sudo sh
+
+echo "➕ Adding user '$USER' to docker group..."
+sudo usermod -aG docker $USER
+
+echo "🔧 Installing Docker Compose plugin..."
+sudo apt install docker-compose-plugin -y
+
+echo "🌱 Installing Git..."
+sudo apt install git -y
+
+echo "💻 Installing Zsh..."
+sudo apt install zsh -y
+
+echo "💡 Installing Oh My Zsh..."
+# Use unattended install to avoid user prompt
+export RUNZSH=no
+export CHSH=no
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "⚙️ Changing default shell to Zsh for user '$USER'..."
+chsh -s $(which zsh)
 
 # Clone the dotfiles repository
 echo_step "Cloning dotfiles repository from $DOTFILES_REPO..."
@@ -61,19 +89,7 @@ if [ -f "$HOME/.bashrc" ]; then
     source "$HOME/.bashrc"
 fi
 
-# Step to install Zsh
-echo_step "Installing Zsh..."
-sudo apt update
-sudo apt install -y zsh
 
-# Make Zsh the default shell
-echo_step "Setting Zsh as the default shell..."
-chsh -s $(which zsh)
-
-# Install Oh My Zsh
-echo_step "Installing Oh My Zsh..."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-
-# Final message
-echo_success "Dotfiles setup complete! Zsh is now the default shell with Oh My Zsh installed."
+echo "✅ All done!"
+echo "⚠️ Please reboot your system to apply group and shell changes."
+echo "You can do this now by running: sudo reboot"
